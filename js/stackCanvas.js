@@ -13,8 +13,7 @@ $(document).ready(function(){
         if (currNum > 0){
             var currX = 30;
             var currY = (MAX_SIZE - currNum) * 34 + 34;
-            ctx.fillStyle="#fff";
-            ctx.fillRect(currX, currY, 240, 34);
+            ctx.clearRect(currX, currY, 240, 34);
             currNum--;
         }
     });
