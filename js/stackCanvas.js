@@ -6,4 +6,18 @@ $(document).ready(function(){
     ctx.lineTo(270, 370);
     ctx.lineTo(270, 30);
     ctx.stroke();
+
+    var currNum = 0;
+    const MAX_SIZE = 10;
+    $("#stack-pop").onclick(function(){
+        if (currNum > 0){
+
+        }
+    });
+
+    $("#stack-push").onclick(function(){
+        if (currNum < MAX_SIZE){
+            
+        }
+    });
 });
