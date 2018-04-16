@@ -14,6 +14,7 @@ $(document).ready(function(){
             var currX = 30;
             var currY = (MAX_SIZE - currNum) * 34 + 34;
             ctx.clearRect(currX, currY, 240, 34);
+            ctx.stroke();
             currNum--;
         }
     });
@@ -23,8 +24,19 @@ $(document).ready(function(){
             var currX = 30;
             var currY = (MAX_SIZE - currNum - 1) * 34 + 34;
             ctx.fillStyle="#ff0000";
+            ctx.strokeStyle="#000";
             ctx.fillRect(currX, currY, 240, 34);
+            ctx.strokeRect(currX, currY, 240, 34);
+            ctx.stroke();
             currNum++;
         }
     });
+
+    function fadeIn(){
+
+    }
+
+    function fadeOut(){
+
+    }
 });
