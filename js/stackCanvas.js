@@ -41,6 +41,12 @@ $(document).ready(function(){
         ctx.closePath();
         ctx.fillStyle="#ff88ff";
         ctx.fill();
+        ctx.font="12px Arial";
+        ctx.fillStyle="#000";
+        if (currNum >= 9)
+            ctx.fillText(currNum+1, x+65, y+19);
+        else
+            ctx.fillText(currNum+1, x+68, y+19);
     }
 
     function clearRoundRect(x, y){
