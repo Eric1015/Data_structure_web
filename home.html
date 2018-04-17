@@ -10,13 +10,14 @@
     <script src="js/jquery-3.3.1.js"></script>
     <title>Home</title>
     <script src="js/stackCanvas.js"></script>
+    <script src="js/queueCanvas.js"></script>
 </head>
 
 <body>
     <div class="stack">
         <h1>Stack</h1>
-        <div class="wrapper" style="position: relative;">
-            <canvas id="stack-canvas" width="300px" height="400px" style="margin-left: 50px; border: solid #fff;">
+        <div class="wrapper" style="position: relative; margin-left: 50px;">
+            <canvas id="stack-canvas" width="300px" height="400px" style="border: solid #fff;">
                 Your Browser does not support the HTML5 canvas tag.
             </canvas>
             <div id="stack-btn" style="position: absolute; top: 200px; left: 500px;">
@@ -24,6 +25,19 @@
                 <button id="stack-push" class="btn btn-default" type="submit">push</button>
             </div>
         </div>
+    </div>
+    <div class="queue">
+        <h1>Queue</h1>
+        <div class="wrapper" style="position: relative; margin-left: 50px;">
+            <canvas id="queue-canvas" width="400px" height="300px">
+                Your Browser does not support the HTML5 canvas tag.
+            </canvas>
+            <div id="queue-btn" style="position: absolute; top: 100px; left: 600px;">
+                <button id="queue-pop" class="btn btn-default" type="submit">pop</button>
+                <button id="queue-push" class="btn btn-default" type="submit">push</button>
+            </div>
+        </div>
+
     </div>
 </body>
 
