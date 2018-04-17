@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <script src="js/jquery-3.3.1.js"></script>
     <title>Home</title>
     <script src="js/stackCanvas.js"></script>
@@ -13,13 +15,15 @@
 <body>
     <div class="stack">
         <h1>Stack</h1>
-        <div id="stack-btn">
-            <button id="stack-pop" class="btn btn-default" type="submit">pop</button>
-            <button id="stack-push" class="btn btn-default" type="submit">push</button>
+        <div class="wrapper" style="position: relative;">
+            <canvas id="stack-canvas" width="300px" height="400px" style="margin-left: 50px; border: solid #fff;">
+                Your Browser does not support the HTML5 canvas tag.
+            </canvas>
+            <div id="stack-btn" style="position: absolute; top: 200px; left: 500px;">
+                <button id="stack-pop" class="btn btn-default" type="submit">pop</button>
+                <button id="stack-push" class="btn btn-default" type="submit">push</button>
+            </div>
         </div>
-        <canvas id="stack-canvas" width="400px" height="400px" style="border: solid #fff;">
-            Your Browser does not support the HTML5 canvas tag.
-        </canvas>
     </div>
 </body>
 
