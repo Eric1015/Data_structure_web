@@ -3,8 +3,8 @@ $(document).ready(function(){
     var ctx = canvas.getContext("2d");
     ctx.moveTo(30, 30);
     ctx.lineTo(30, 370);
-    ctx.lineTo(270, 370);
-    ctx.lineTo(270, 30);
+    ctx.lineTo(170, 370);
+    ctx.lineTo(170, 30);
     ctx.stroke();
 
     var currNum = 0;
@@ -12,9 +12,8 @@ $(document).ready(function(){
     $("#stack-pop").click(function(){
         if (currNum > 0){
             var currX = 30;
-            var currY = (MAX_SIZE - currNum) * 34 + 34;
-            ctx.clearRect(currX, currY, 240, 34);
-            ctx.stroke();
+            var currY = (MAX_SIZE - currNum) * 34 + 30;
+            clearRoundRect(currX, currY);
             currNum--;
         }
     });
@@ -23,10 +22,7 @@ $(document).ready(function(){
         if (currNum < MAX_SIZE){
             var currX = 30;
             var currY = (MAX_SIZE - currNum - 1) * 34 + 30;
-            ctx.fillStyle="#ff0000";
-            ctx.strokeStyle="#000";
             drawRoundRect(currX, currY);
-            ctx.stroke();
             currNum++;
         }
     });
@@ -35,15 +31,31 @@ $(document).ready(function(){
         var r = 10;
         ctx.beginPath();
         ctx.arc(x+4+r, y+2+r, r, 1*Math.PI, 1.5*Math.PI, false);
-        ctx.lineTo(240-r-4, y+2);
-        ctx.arc(x+240-r-4, y+r+2, r, 1.5*Math.PI, 0, false);
-        ctx.lineTo(x+240-4, y+34-r-2);
-        ctx.arc(x+240-r-4, y+34-r-2, r, 0, 0.5*Math.PI, false);
+        ctx.lineTo(140-r-4, y+2);
+        ctx.arc(x+140-r-4, y+r+2, r, 1.5*Math.PI, 0, false);
+        ctx.lineTo(x+140-4, y+34-r-2);
+        ctx.arc(x+140-r-4, y+34-r-2, r, 0, 0.5*Math.PI, false);
         ctx.lineTo(x+r+4, y+34-2);
         ctx.arc(x+r+4, y+34-r-2, r, 0.5*Math.PI, 1*Math.PI, false);
         ctx.lineTo(x+4, y+r+2);
         ctx.closePath();
-        ctx.fillStyle="red";
+        ctx.fillStyle="#ff88ff";
+        ctx.fill();
+    }
+
+    function clearRoundRect(x, y){
+        var r = 10;
+        ctx.beginPath();
+        ctx.arc(x+3+r, y+1+r, r, 1*Math.PI, 1.5*Math.PI, false);
+        ctx.lineTo(140-r-3, y+1);
+        ctx.arc(x+140-r-3, y+r+1, r, 1.5*Math.PI, 0, false);
+        ctx.lineTo(x+140-3, y+34-r-1);
+        ctx.arc(x+140-r-3, y+34-r-1, r, 0, 0.5*Math.PI, false);
+        ctx.lineTo(x+r+3, y+34-1);
+        ctx.arc(x+r+3, y+34-r-1, r, 0.5*Math.PI, 1*Math.PI, false);
+        ctx.lineTo(x+3, y+r+1);
+        ctx.closePath();
+        ctx.fillStyle="#fff";
         ctx.fill();
     }
     
