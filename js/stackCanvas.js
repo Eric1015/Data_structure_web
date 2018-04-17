@@ -6,6 +6,8 @@ $(document).ready(function () {
     ctx.lineTo(170, 370);
     ctx.lineTo(170, 30);
     ctx.stroke();
+    ctx.font="20px Arial";
+    ctx.fillText("Buttom", 180, 370);
 
     var currNum = 0;
     const MAX_SIZE = 10;
