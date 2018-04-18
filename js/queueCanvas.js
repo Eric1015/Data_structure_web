@@ -6,6 +6,8 @@ $(document).ready(function () {
     ctx.moveTo(30, 150);
     ctx.lineTo(370, 150);
     ctx.stroke();
+    ctx.font="20px Arial";
+    ctx.fillText("Front", 30, 170);
 
     var currNum = 0;
     const MAX_SIZE = 10;
