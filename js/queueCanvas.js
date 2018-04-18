@@ -6,13 +6,13 @@ $(document).ready(function () {
     ctx.moveTo(30, 150);
     ctx.lineTo(370, 150);
     ctx.stroke();
-    ctx.font="20px Arial";
+    ctx.font = "20px Arial";
     ctx.fillText("Front", 30, 170);
 
     var currNum = 0;
     const MAX_SIZE = 10;
     var i = 0;
-    var pop_done = false;
+    var beforePush = 0;
     var requestAnimationFrame = window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -20,9 +20,10 @@ $(document).ready(function () {
 
     $("#queue-push").click(function () {
         if (currNum < MAX_SIZE) {
-            currX = currNum * 34 + 30;
-            currY = 50;
-            drawRoundRect(currX, currY, currNum);
+            document.getElementById("queue-push").disabled = true;
+            i = MAX_SIZE;
+            beforePush = currNum;
+            requestAnimationFrame(pushRectAnimation);
             currNum++;
         }
     });
@@ -92,5 +93,20 @@ $(document).ready(function () {
         ctx.closePath();
         ctx.fillStyle = "#fff";
         ctx.fill();
+    }
+
+    function pushRectAnimation() {
+        if (++counter % 10 == 0) {
+            if (i >= beforePush) {
+                clearRoundRect(30 + (i + 1) * 34, 50);
+                drawRoundRect(30 + i * 34, 50, beforePush);
+                i--;
+                requestAnimationFrame(pushRectAnimation);
+            }
+            else
+                document.getElementById("queue-push").disabled = false;
+        }
+        else
+            requestAnimationFrame(pushRectAnimation);
     }
 });
