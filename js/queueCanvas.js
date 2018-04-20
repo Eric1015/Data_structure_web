@@ -14,6 +14,7 @@ $(document).ready(function () {
     var i = 0;
     var beforePush = 0;
     var counter = 0;
+    var speed = 5;
     var requestAnimationFrame = window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -46,6 +47,18 @@ $(document).ready(function () {
         }
     });
 
+    $("#queue-up").click(function(){
+        if (speed > 1){
+            speed--;
+        }
+    });
+
+    $("#queue-down").click(function(){
+        if (speed < 15){
+            speed++;
+        }
+    })
+
     function drawRoundRect(x, y, index) {
         var r = 10;
         ctx.beginPath();
@@ -69,7 +82,7 @@ $(document).ready(function () {
     }
 
     function redraw() {
-        if (++counter % 5 == 0) {
+        if (++counter % speed == 0) {
             clearRoundRect(30 + (i + 1) * 34, 50);
             drawRoundRect(30 + i * 34, 50, i);
             i++;
@@ -99,7 +112,7 @@ $(document).ready(function () {
     }
 
     function pushRectAnimation() {
-        if (++counter % 5 == 0) {
+        if (++counter % speed == 0) {
             if (i >= beforePush) {
                 clearRoundRect(30 + (i + 1) * 34, 50);
                 drawRoundRect(30 + i * 34, 50, beforePush);
