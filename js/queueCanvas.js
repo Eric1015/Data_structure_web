@@ -13,6 +13,7 @@ $(document).ready(function () {
     const MAX_SIZE = 10;
     var i = 0;
     var beforePush = 0;
+    var counter = 0;
     var requestAnimationFrame = window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -23,6 +24,7 @@ $(document).ready(function () {
             document.getElementById("queue-push").disabled = true;
             i = MAX_SIZE;
             beforePush = currNum;
+            counter = 0;
             requestAnimationFrame(pushRectAnimation);
             currNum++;
         }
@@ -34,8 +36,10 @@ $(document).ready(function () {
             i = 0;
             clearRoundRect(30, 50);
             // Prevent deleting nothing and add one in redraw function
-            if (currNum > 1)
+            if (currNum > 1){
+                counter = 0;
                 requestAnimationFrame(redraw);
+            }
             else
                 document.getElementById("queue-pop").disabled = false;
             currNum--;
@@ -64,9 +68,8 @@ $(document).ready(function () {
             ctx.fillText(index + 1, x + 15, y + 50);
     }
 
-    var counter = 0;
     function redraw() {
-        if (++counter % 10 == 0) {
+        if (++counter % 5 == 0) {
             clearRoundRect(30 + (i + 1) * 34, 50);
             drawRoundRect(30 + i * 34, 50, i);
             i++;
@@ -96,7 +99,7 @@ $(document).ready(function () {
     }
 
     function pushRectAnimation() {
-        if (++counter % 10 == 0) {
+        if (++counter % 5 == 0) {
             if (i >= beforePush) {
                 clearRoundRect(30 + (i + 1) * 34, 50);
                 drawRoundRect(30 + i * 34, 50, beforePush);
