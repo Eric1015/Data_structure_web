@@ -1,8 +1,9 @@
-$bg: "navy";
+$bg: linear-gradient(blue, skyblue);
+$h1bg: linear-gradient(to bottom right, green, yellow);
 
 h1{
     padding: 10px;
-    background: lightgreen;
+    background: $h1bg;
 }
 
 body{
