@@ -15,7 +15,7 @@ $(document).ready(function () {
         if (currNum > 0) {
             var currX = 30;
             var currY = (MAX_SIZE - currNum) * 34 + 30;
-            clearRoundRect(currX, currY);
+            drawRoundRect(currX, currY, 3, 1, 140, 34, 10, "#fff", "#fff");
             currNum--;
         }
     });
@@ -24,47 +24,30 @@ $(document).ready(function () {
         if (currNum < MAX_SIZE) {
             var currX = 30;
             var currY = (MAX_SIZE - currNum - 1) * 34 + 30;
-            drawRoundRect(currX, currY);
+            drawRoundRect(currX, currY, 4, 2, 140, 34, 10, "#ff88ff");
             currNum++;
         }
     });
 
-    function drawRoundRect(x, y) {
-        var r = 10;
+    function drawRoundRect(x,y, mx, my, width, height, r, color, fontColor="#000", font="12px Arial"){
         ctx.beginPath();
-        ctx.arc(x + 4 + r, y + 2 + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
-        ctx.lineTo(140 - r - 4, y + 2);
-        ctx.arc(x + 140 - r - 4, y + r + 2, r, 1.5 * Math.PI, 0, false);
-        ctx.lineTo(x + 140 - 4, y + 34 - r - 2);
-        ctx.arc(x + 140 - r - 4, y + 34 - r - 2, r, 0, 0.5 * Math.PI, false);
-        ctx.lineTo(x + r + 4, y + 34 - 2);
-        ctx.arc(x + r + 4, y + 34 - r - 2, r, 0.5 * Math.PI, 1 * Math.PI, false);
-        ctx.lineTo(x + 4, y + r + 2);
+        ctx.arc(x + mx + r, y + my + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
+        ctx.lineTo(width - r - mx, y + my);
+        ctx.arc(x + width - r - mx, y + r + my, r, 1.5 * Math.PI, 0, false);
+        ctx.lineTo(x + width - mx, y + height - r - my);
+        ctx.arc(x + width - r - mx, y + height - r - my, r, 0, 0.5 * Math.PI, false);
+        ctx.lineTo(x + r + mx, y + height - my);
+        ctx.arc(x + r + mx, y + height - r - my, r, 0.5 * Math.PI, 1 * Math.PI, false);
+        ctx.lineTo(x + mx, y + r + my);
         ctx.closePath();
-        ctx.fillStyle = "#ff88ff";
+        ctx.fillStyle = color;
         ctx.fill();
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "#000";
+        ctx.font = font;
+        ctx.fillStyle = fontColor;
         if (currNum >= 9)
-            ctx.fillText(currNum + 1, x + 65, y + 19);
+            ctx.fillText(currNum + 1, x + width/2-5, y + height/2+2);
         else
-            ctx.fillText(currNum + 1, x + 68, y + 19);
-    }
-
-    function clearRoundRect(x, y) {
-        var r = 10;
-        ctx.beginPath();
-        ctx.arc(x + 3 + r, y + 1 + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
-        ctx.lineTo(140 - r - 3, y + 1);
-        ctx.arc(x + 140 - r - 3, y + r + 1, r, 1.5 * Math.PI, 0, false);
-        ctx.lineTo(x + 140 - 3, y + 34 - r - 1);
-        ctx.arc(x + 140 - r - 3, y + 34 - r - 1, r, 0, 0.5 * Math.PI, false);
-        ctx.lineTo(x + r + 3, y + 34 - 1);
-        ctx.arc(x + r + 3, y + 34 - r - 1, r, 0.5 * Math.PI, 1 * Math.PI, false);
-        ctx.lineTo(x + 3, y + r + 1);
-        ctx.closePath();
-        ctx.fillStyle = "#fff";
-        ctx.fill();
+            ctx.fillText(currNum + 1, x + width/2-2, y + height/2+2);
     }
 
     function fadeIn() {
