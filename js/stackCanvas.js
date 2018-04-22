@@ -6,7 +6,7 @@ $(document).ready(function () {
     ctx.lineTo(170, 370);
     ctx.lineTo(170, 30);
     ctx.stroke();
-    ctx.font="20px Arial";
+    ctx.font = "20px Arial";
     ctx.fillText("Buttom", 180, 370);
 
     var currNum = 0;
@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-    function drawRoundRect(x,y, mx, my, width, height, r, color, fontColor="#000", font="12px Arial"){
+    function drawRoundRect(x, y, mx, my, width, height, r, color, fontColor = "#000", font = "12px Arial") {
         ctx.beginPath();
         ctx.arc(x + mx + r, y + my + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
         ctx.lineTo(width - r - mx, y + my);
@@ -45,9 +45,9 @@ $(document).ready(function () {
         ctx.font = font;
         ctx.fillStyle = fontColor;
         if (currNum >= 9)
-            ctx.fillText(currNum + 1, x + width/2-5, y + height/2+2);
+            ctx.fillText(currNum + 1, x + width / 2 - 5, y + height / 2 + 2);
         else
-            ctx.fillText(currNum + 1, x + width/2-2, y + height/2+2);
+            ctx.fillText(currNum + 1, x + width / 2 - 2, y + height / 2 + 2);
     }
 
     function fadeIn() {

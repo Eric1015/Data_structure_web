@@ -35,9 +35,9 @@ $(document).ready(function () {
         if (currNum > 0) {
             document.getElementById("queue-pop").disabled = true;
             i = 0;
-            clearRoundRect(30, 50);
+            drawRoundRect(30, 50, 0, 3, 1, 34, 100, 10, "#fff", "#fff");
             // Prevent deleting nothing and add one in redraw function
-            if (currNum > 1){
+            if (currNum > 1) {
                 counter = 0;
                 requestAnimationFrame(redraw);
             }
@@ -47,44 +47,43 @@ $(document).ready(function () {
         }
     });
 
-    $("#queue-up").click(function(){
-        if (speed > 1){
+    $("#queue-up").click(function () {
+        if (speed > 1) {
             speed--;
         }
     });
 
-    $("#queue-down").click(function(){
-        if (speed < 15){
+    $("#queue-down").click(function () {
+        if (speed < 15) {
             speed++;
         }
-    })
+    });
 
-    function drawRoundRect(x, y, index) {
-        var r = 10;
+    function drawRoundRect(x, y, index, mx, my, width, height, r, color, fontColor = "#000", font = "12px Arial") {
         ctx.beginPath();
-        ctx.arc(x + 4 + r, y + 2 + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
-        ctx.lineTo(x + 34 - r - 4, y + 2);
-        ctx.arc(x + 34 - r - 4, y + r + 2, r, 1.5 * Math.PI, 0, false);
-        ctx.lineTo(x + 34 - 4, y + 100 - r - 2);
-        ctx.arc(x + 34 - r - 4, y + 100 - r - 2, r, 0, 0.5 * Math.PI, false);
-        ctx.lineTo(x + r + 4, y + 100 - 2);
-        ctx.arc(x + r + 4, y + 100 - r - 2, r, 0.5 * Math.PI, 1 * Math.PI, false);
-        ctx.lineTo(x + 4, y + r + 2);
+        ctx.arc(x + mx + r, y + my + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
+        ctx.lineTo(width - r - mx, y + my);
+        ctx.arc(x + width - r - mx, y + r + my, r, 1.5 * Math.PI, 0, false);
+        ctx.lineTo(x + width - mx, y + height - r - my);
+        ctx.arc(x + width - r - mx, y + height - r - my, r, 0, 0.5 * Math.PI, false);
+        ctx.lineTo(x + r + mx, y + height - my);
+        ctx.arc(x + r + mx, y + height - r - my, r, 0.5 * Math.PI, 1 * Math.PI, false);
+        ctx.lineTo(x + mx, y + r + my);
         ctx.closePath();
-        ctx.fillStyle = "#ff8800";
+        ctx.fillStyle = color;
         ctx.fill();
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "#000";
+        ctx.font = font;
+        ctx.fillStyle = fontColor;
         if (index >= 9)
-            ctx.fillText(index + 1, x + 12, y + 50);
+            ctx.fillText(index + 1, x + width / 2 - 5, y + height / 2 + 2);
         else
-            ctx.fillText(index + 1, x + 15, y + 50);
+            ctx.fillText(index + 1, x + width / 2 - 2, y + height / 2 + 2);
     }
 
     function redraw() {
         if (++counter % speed == 0) {
-            clearRoundRect(30 + (i + 1) * 34, 50);
-            drawRoundRect(30 + i * 34, 50, i);
+            drawRoundRect(30 + (i + 1) * 34, 50, 0, 3, 1, 34, 100, 10, "#fff", "#fff");
+            drawRoundRect(30 + i * 34, 50, i, 4, 2, 34, 100, 10, "#ff8800");
             i++;
             if (i < currNum)
                 requestAnimationFrame(redraw);
@@ -95,27 +94,11 @@ $(document).ready(function () {
             requestAnimationFrame(redraw);
     }
 
-    function clearRoundRect(x, y) {
-        var r = 10;
-        ctx.beginPath();
-        ctx.arc(x + 3 + r, y + 1 + r, r, 1 * Math.PI, 1.5 * Math.PI, false);
-        ctx.lineTo(x + 34 - r - 3, y + 1);
-        ctx.arc(x + 34 - r - 3, y + r + 1, r, 1.5 * Math.PI, 0, false);
-        ctx.lineTo(x + 34 - 3, y + 100 - r - 1);
-        ctx.arc(x + 34 - r - 3, y + 100 - r - 1, r, 0, 0.5 * Math.PI, false);
-        ctx.lineTo(x + r + 3, y + 100 - 1);
-        ctx.arc(x + r + 3, y + 100 - r - 1, r, 0.5 * Math.PI, 1 * Math.PI, false);
-        ctx.lineTo(x + 3, y + r + 1);
-        ctx.closePath();
-        ctx.fillStyle = "#fff";
-        ctx.fill();
-    }
-
     function pushRectAnimation() {
         if (++counter % speed == 0) {
             if (i >= beforePush) {
-                clearRoundRect(30 + (i + 1) * 34, 50);
-                drawRoundRect(30 + i * 34, 50, beforePush);
+                drawRoundRect(30 + (i + 1) * 34, 50, 0, 3, 1, 34, 100, 10, "#fff", "#fff");
+                drawRoundRect(30 + i * 34, 50, beforePush, 4, 2, 34, 100, 10, "#ff8800");
                 i--;
                 requestAnimationFrame(pushRectAnimation);
             }
