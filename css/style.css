@@ -1,7 +1,9 @@
+h1, body, h2, p { margin: 0px; }
+
 h1 { padding: 10px; background: linear-gradient(to bottom right, green, yellow); }
 
-body { background: linear-gradient(blue, skyblue); }
+body { background: linear-gradient(blue, skyblue); padding: 0% 10%; }
 
-.container { background: #fff; margin-left: 50px; margin-right: 50px; }
+.container { background: #fff; }
 
 button { margin-left: 5px; margin-right: 5px; }

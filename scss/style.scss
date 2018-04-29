@@ -1,6 +1,10 @@
 $bg: linear-gradient(blue, skyblue);
 $h1bg: linear-gradient(to bottom right, green, yellow);
 
+h1, body, h2, p{
+    margin: 0px;
+}
+
 h1{
     padding: 10px;
     background: $h1bg;
@@ -8,12 +12,11 @@ h1{
 
 body{
     background: $bg;
+    padding: 0% 10%;
 }
 
 .container{
     background: #fff;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 button{
